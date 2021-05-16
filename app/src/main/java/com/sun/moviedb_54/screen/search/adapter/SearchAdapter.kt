@@ -13,6 +13,7 @@ import com.sun.moviedb_54.databinding.ItemSearchMovieBinding
 import com.sun.moviedb_54.screen.genres.adapter.GenresMovieAdapter
 import com.sun.moviedb_54.screen.search.adapter.itemviewmodel.SearchItemViewModel
 import com.sun.moviedb_54.ultis.BindingDataRecyclerView
+import kotlinx.android.synthetic.main.item_search_movie.view.*
 
 class SearchAdapter(
     private val onClickListener: (Int) -> Unit
@@ -72,6 +73,9 @@ class SearchAdapter(
 
         fun bindData(movieResult: MovieResult) {
             itemViewModel.setData(movieResult)
+            binding.root.imageViewSearchMovie.setOnClickListener {
+                movieResult.id?.let { it1 -> onClickListener(it1) }
+            }
             binding.executePendingBindings()
         }
     }

@@ -13,8 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/blue_dark"
-        android:onClick="@{viewModel::onItemClicked}">
+        android:background="@color/blue_dark">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageViewSearchMovie"

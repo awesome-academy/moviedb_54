@@ -3,12 +3,10 @@ package com.sun.moviedb_54.extensions
 import android.widget.ImageView
 import android.widget.RatingBar
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 fun ImageView.loadFromUrl(url: String) {
     Glide.with(this.context.applicationContext)
         .load(url)
-        .transition(DrawableTransitionOptions.withCrossFade())
         .skipMemoryCache(false)
         .into(this)
 }

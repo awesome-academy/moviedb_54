@@ -14,6 +14,7 @@ import com.sun.moviedb_54.R
 import com.sun.moviedb_54.data.model.MovieFavorite
 import com.sun.moviedb_54.databinding.FragmentDetailMovieBinding
 import com.sun.moviedb_54.extensions.addFragment
+import com.sun.moviedb_54.screen.favourite.FavouriteFragment
 import com.sun.moviedb_54.ultis.Constant.URI_YOUTUBE_APP
 import com.sun.moviedb_54.ultis.Constant.URI_YOUTUBE_WEBSITE
 import kotlinx.android.synthetic.main.fragment_detail_movie.*
@@ -27,6 +28,11 @@ class DetailMovieFragment : Fragment() {
     private val recommendationAdapter by lazy {
         RecommendationAdapter {
             addFragment(DetailMovieFragment.newInstance(it), R.id.mainFrame)
+        }
+    }
+    private val actorMovieAdapter by lazy {
+        ActorMovieAdapter{
+            Toast.makeText(requireContext(),it.toString(),Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -56,6 +62,7 @@ class DetailMovieFragment : Fragment() {
 
     private fun initView() {
         binding.recommendAdapter = recommendationAdapter
+        binding.actorMovieAdapter = actorMovieAdapter
         idMovie?.let { checkFavorite(it) }
     }
 
@@ -71,6 +78,7 @@ class DetailMovieFragment : Fragment() {
             ).show()
         }
         imageFavorite.setOnClickListener {
+            FavouriteFragment.isCheckFavorite = !FavouriteFragment.isCheckFavorite
             if (detailMovieViewModel.isFavorite) {
                 detailMovieViewModel.deleteFavorite()
                 imageFavorite.setImageResource(R.drawable.ic_heart_default)

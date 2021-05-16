@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer
 import com.sun.moviedb_54.R
 import com.sun.moviedb_54.data.model.GenresResult
 import com.sun.moviedb_54.databinding.FragmentGenresBinding
+import com.sun.moviedb_54.extensions.addFragment
+import com.sun.moviedb_54.screen.detailmovie.DetailMovieFragment
 import com.sun.moviedb_54.screen.genres.adapter.GenresAdapter
 import com.sun.moviedb_54.screen.genres.adapter.GenresMovieAdapter
 import com.sun.moviedb_54.screen.genres.adapter.GenresSelectedAdapter
@@ -52,6 +54,7 @@ class GenresFragment : Fragment() {
             }
         }
         genresMovieAdapter = GenresMovieAdapter {
+            addFragment(DetailMovieFragment.newInstance(it), R.id.mainFrame)
         }
         genresSelectedAdapter =
             GenresSelectedAdapter { positionSelected: Int?, genresResult: GenresResult ->

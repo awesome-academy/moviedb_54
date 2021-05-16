@@ -12,6 +12,7 @@ import com.sun.moviedb_54.databinding.ItemGenresMovieBinding
 import com.sun.moviedb_54.databinding.ItemLoadMoreBinding
 import com.sun.moviedb_54.screen.genres.adapter.itemviewholder.GenresMovieItemViewModel
 import com.sun.moviedb_54.ultis.BindingDataRecyclerView
+import kotlinx.android.synthetic.main.item_genres_movie.view.*
 
 class GenresMovieAdapter(private val onClickListener: (Int) -> Unit) :
     ListAdapter<GenresMovieResult, RecyclerView.ViewHolder>(GenresMovieDiffUtil()),
@@ -67,6 +68,9 @@ class GenresMovieAdapter(private val onClickListener: (Int) -> Unit) :
 
         fun bindData(genresMovieResult: GenresMovieResult) {
             itemViewModel.setData(genresMovieResult)
+            binding.root.imageViewGenresMovie.setOnClickListener {
+                genresMovieResult.id?.let { it1 -> onClickListener(it1) }
+            }
             binding.executePendingBindings()
         }
     }
